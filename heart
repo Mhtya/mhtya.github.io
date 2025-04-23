@@ -1,0 +1,89 @@
+<!DOCTYPE >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>移动端爱心动画</title>
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 移动端全屏适配 */
+        body {
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;  /* 修正后的正确语法 */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 爱心容器 */
+        .heart-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            filter: drop-shadow(0 0 15px rgba(255,0,106,0.5));
+        }
+
+        /* 核心爱心形状 */
+        .heart {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                #ff006a 25%,
+                #ff1493 50%,
+                #ff69b4 75%
+            );
+            clip-path: polygon(
+                50% 20%,
+                70% 5%,
+                85% 15%,
+                95% 35%,
+                90% 60%,
+                75% 80%,
+                50% 95%,
+                25% 80%,
+                10% 60%,
+                5% 35%,
+                15% 15%,
+                30% 5%
+            );
+            animation:
+                pulse 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+                glow 1.5s ease-in-out infinite alternate;
+        }
+
+        /* 心跳动画 */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            60% { transform: scale(0.95); }
+        }
+
+        /* 辉光效果 */
+        @keyframes glow {
+            from { filter: brightness(1) drop-shadow(0 0 5px #ff006a); }
+            to { filter: brightness(1.2) drop-shadow(0 0 20px #ff1493); }
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 480px) {
+            .heart-container {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container">
+        <div class="heart"></div>
+    </div>
+</body>
+</>
